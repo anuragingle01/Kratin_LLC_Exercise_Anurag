@@ -1,8 +1,44 @@
-
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.sidebar a:hover {
+    color: #3498db;
+}
+
+main {
+    flex: 1;
+    max-width: 800px;
+    margin: 20px auto;
 }
 
 header {
@@ -12,13 +48,7 @@ header {
     padding: 20px;
 }
 
-main {
-    max-width: 800px;
-    margin: 20px auto;
-}
-
-#heartRateChart,
-#temperatureChart {
+section {
     border: 1px solid #ddd;
     margin-bottom: 20px;
     padding: 20px;
