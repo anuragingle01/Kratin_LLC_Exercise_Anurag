@@ -1,1 +1,0 @@
-# Kratin_LLC_Exercise_Anurag
