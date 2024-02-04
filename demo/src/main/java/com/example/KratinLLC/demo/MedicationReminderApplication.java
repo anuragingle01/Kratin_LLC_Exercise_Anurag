@@ -1,4 +1,4 @@
-package com.KratinLLC.demo;
+package com.example.KratinLLC.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

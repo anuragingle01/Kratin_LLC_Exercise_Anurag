@@ -1,7 +1,7 @@
-package com.KratinLLC.controller;
+package com.example.KratinLLC.controller;
 
-import com.example.medicationreminder.model.Medication;
-import com.example.medicationreminder.repository.MedicationRepository;
+import com.example.KratinLLC.model.Medication;
+import com.example.KratinLLC.repository.MedicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
