@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medication Management</title>
+    <style>
+        /* Add some basic styling if needed */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Manage Medications</h1>
+
+    <form id="medicationForm" action="<?= base_url('medication/save_medication') ?>" method="post">
+        <div id="medicationsContainer">
+            <!-- Medication details form fields -->
+            <div class="medicationRow">
+                <label for="medication_name_1">Medication Name:</label>
+                <input type="text" name="medication_name[]" id="medication_name_1" required>
+                
+                <label for="dosage_1">Dosage:</label>
+                <input type="text" name="dosage[]" id="dosage_1" required>
+                
+                <label for="timing_1">Timing:</label>
+                <input type="time" name="timing[]" id="timing_1" required>
+            </div>
+        </div>
+
+        <button type="button" onclick="addMedication()">Add Medication</button>
+        <button type="submit">Save Medications</button>
+    </form>
+
+    <script>
+        function addMedication() {
+            const medicationsContainer = document.getElementById('medicationsContainer');
+            const newMedicationRow = document.createElement('div');
+            newMedicationRow.className = 'medicationRow';
+
+            const medicationNameInput = document.createElement('input');
+            medicationNameInput.type = 'text';
+            medicationNameInput.name = 'medication_name[]';
+            medicationNameInput.required = true;
+            newMedicationRow.appendChild(document.createTextNode('Medication Name: '));
+            newMedicationRow.appendChild(medicationNameInput);
+
+            const dosageInput = document.createElement('input');
+            dosageInput.type = 'text';
+            dosageInput.name = 'dosage[]';
+            dosageInput.required = true;
+            newMedicationRow.appendChild(document.createTextNode('Dosage: '));
+            newMedicationRow.appendChild(dosageInput);
+
+            const timingInput = document.createElement('input');
+            timingInput.type = 'time';
+            timingInput.name = 'timing[]';
+            timingInput.required = true;
+            newMedicationRow.appendChild(document.createTextNode('Timing: '));
+            newMedicationRow.appendChild(timingInput);
+
+            medicationsContainer.appendChild(newMedicationRow);
+        }
+    </script>
+</body>
+</html>
