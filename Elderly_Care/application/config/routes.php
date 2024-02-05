@@ -49,7 +49,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'Medications';
-$route['success/(:num)'] = 'medications/success/$1';
+// application/config/routes.php
+
+$route['default_controller'] = 'HomeController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+// Add custom routes for each feature
+$route['home/yogaExercise'] = 'HomeController/yogaExercise';
+$route['home/scheduleMedicines'] = 'HomeController/scheduleMedicines';
+$route['home/locateHospital'] = 'HomeController/locateHospital';
+$route['home/healthTrack'] = 'HomeController/healthTrack';
+$route['medication'] = 'MedicationController/index';
+$route['medication/add_medication'] = 'MedicationController/add_medication';
+
+
