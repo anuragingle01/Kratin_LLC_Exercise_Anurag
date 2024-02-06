@@ -18,6 +18,6 @@ class HomeController extends CI_Controller {
     }
 
     public function healthTrack() {
-        // Add logic for Health Tracking here
+        $this->load->view('health_track');
     }
 }

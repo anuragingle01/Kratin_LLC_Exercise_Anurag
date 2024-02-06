@@ -68,31 +68,24 @@
     <div id="map" style="height: 500px;"></div>
 
     <script>
-        var map = L.map('map').setView([51.505, -0.09], 13); // Initialize map with a default location
-
-        // Add OpenStreetMap tile layer
+        var map = L.map('map').setView([51.505, -0.09], 13);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Get user's location
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 var userLocation = [position.coords.latitude, position.coords.longitude];
 
-                // Move map to user's location
                 map.setView(userLocation, 13);
 
-                // Add marker for user's location
                 L.marker(userLocation).addTo(map)
                     .bindPopup('Your location').openPopup();
 
-                // Query hospitals near user's location using Overpass API
                 var query = '[out:json];node(around:' + 5000 + ',' + userLocation[0] + ',' + userLocation[1] + ')[amenity=hospital];out;';
                 fetch('https://overpass-api.de/api/interpreter?data=' + encodeURIComponent(query))
                     .then(response => response.json())
                     .then(data => {
-                        // Loop through results and add markers for hospitals
                         data.elements.forEach(element => {
                             var hospitalLocation = [element.lat, element.lon];
                             L.marker(hospitalLocation).addTo(map)

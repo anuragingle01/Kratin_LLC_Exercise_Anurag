@@ -1,63 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medication Schedule</title>
-    <!-- Add JavaScript for reminders -->
-    <script>
-        function showReminder(medicineName) {
-            // Make an Ajax request to a CodeIgniter controller to send an email
-            $.ajax({
-                type: 'POST',
-                url: '<?= base_url('medication/send_email') ?>',
-                data: {
-                    medicine_name: medicineName
-                },
-                success: function(response) {
-                    alert('Email sent: ' + response);
-                },
-                error: function(error) {
-                    alert('Error sending email: ' + error.responseText);
-                }
-            });
-        }
-    </script>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<!-- <body>
+<body>
     <h1>Medication Schedule</h1>
 
-    <table border="1">
-        <tr>
-            <th>Medicine Name</th>
-            <th>Dosage</th>
-            <th>Timing</th>
-        </tr>
-        <?php foreach ($medications as $medication) : ?>
-        <tr>
-            <td><?= $medication->medicine_name ?></td>
-            <td><?= $medication->dosage ?></td>
-            <td><?= $medication->timing ?></td>
-        </tr>
-        <?php endforeach; ?>
-    </table> -->
+    <h2>Add Medication</h2>
+    <form id="medicationForm" action="<?= base_url('medication/add_medication') ?>" method="post">
+        <div id="medicationFields">
+            <label for="medicine_name">Medicine Name:</label>
+            <input type="text" name="medicine_name[]" required><br>
 
-<h2>Add Medication</h2>
-<form action="<?= base_url('medication/add_medication') ?>" method="post">
-    <label for="medicine_name">Medicine Name:</label>
-    <input type="text" name="medicine_name" required><br>
+            <label for="dosage">Dosage:</label>
+            <input type="text" name="dosage[]" required><br>
 
-    <label for="dosage">Dosage:</label>
-    <input type="text" name="dosage" required><br>
+            <label for="timing">Timing:</label>
+            <input type="time" name="timing[]" required><br>
+        </div>
 
-    <label for="timing">Timing:</label>
-    <input type="time" name="timing" required><br>
+        <input type="button" value="Add More Medication" onclick="addMedicationField()">
+        <input type="submit" value="Save Medications">
 
-    <input type="submit" value="Add Medication">
-</form>
+    </form>
+            <input type="button" value="View Scheduled Medications" onclick="viewScheduledMedications()">
 
+    <script>
+        function addMedicationField() {
+            var medicationField = document.getElementById('medicationFields');
+            var clone = medicationField.cloneNode(true);
+            document.getElementById('medicationForm').appendChild(clone);
+        }
+        function viewScheduledMedications() {
+            window.location.href = '<?= base_url('medication/get_scheduled_medications') ?>';
+        }
+
+    </script>
 </body>
-
 </html>

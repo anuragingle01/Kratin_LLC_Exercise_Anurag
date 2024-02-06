@@ -65,7 +65,6 @@
     </nav>
 
     <div class="container">
-        <!-- Your content goes here -->
     </div>
 </body>
 </html>

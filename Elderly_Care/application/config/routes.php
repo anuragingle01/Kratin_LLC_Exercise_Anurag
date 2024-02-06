@@ -62,5 +62,7 @@ $route['home/locateHospital'] = 'HomeController/locateHospital';
 $route['home/healthTrack'] = 'HomeController/healthTrack';
 $route['medication'] = 'MedicationController/index';
 $route['medication/add_medication'] = 'MedicationController/add_medication';
+$route['medication/view_scheduled_medications'] = 'MedicationController/view_scheduled_medications';
+
 
 
