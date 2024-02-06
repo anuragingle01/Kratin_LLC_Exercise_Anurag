@@ -1,11 +1,16 @@
-<!-- application/views/locate_hospital.php -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Locate Nearby Hospital</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -59,49 +64,43 @@
     <nav>
         <a href="<?= base_url('home'); ?>"><i class="fas fa-arrow-left"></i> Back</a>
     </nav>
-
-    <div id="map"></div>
+    <body>
+    <div id="map" style="height: 500px;"></div>
 
     <script>
-        const apiKey = 'AIzaSyByH7PoDePLb8Adsu7de3KdPfM8B4XALxw';
+        var map = L.map('map').setView([51.505, -0.09], 13); // Initialize map with a default location
 
-        function initMap() {
-            const map = new google.maps.Map(document.getElementById('map'), {
-                center: { lat: -34.397, lng: 150.644 },
-                zoom: 14
-            });
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-            // Use the Places API to find nearby hospitals
-            const service = new google.maps.places.PlacesService(map);
-            service.nearbySearch({
-                location: map.getCenter(),
-                radius: 5000, // Search within a 5km radius
-                types: ['hospital']
-            }, (results, status) => {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    for (const place of results) {
-                        createMarker(place);
-                    }
-                }
-            });
-        }
+        // Get user's location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var userLocation = [position.coords.latitude, position.coords.longitude];
 
-        function createMarker(place) {
-            const marker = new google.maps.Marker({
-                map,
-                position: place.geometry.location,
-                title: place.name
-            });
+                // Move map to user's location
+                map.setView(userLocation, 13);
 
-            const infowindow = new google.maps.InfoWindow({
-                content: `<strong>${place.name}</strong><br>${place.vicinity}`
-            });
+                // Add marker for user's location
+                L.marker(userLocation).addTo(map)
+                    .bindPopup('Your location').openPopup();
 
-            marker.addListener('click', () => {
-                infowindow.open(map, marker);
+                // Query hospitals near user's location using Overpass API
+                var query = '[out:json];node(around:' + 5000 + ',' + userLocation[0] + ',' + userLocation[1] + ')[amenity=hospital];out;';
+                fetch('https://overpass-api.de/api/interpreter?data=' + encodeURIComponent(query))
+                    .then(response => response.json())
+                    .then(data => {
+                        // Loop through results and add markers for hospitals
+                        data.elements.forEach(element => {
+                            var hospitalLocation = [element.lat, element.lon];
+                            L.marker(hospitalLocation).addTo(map)
+                                .bindPopup('<b>' + element.tags.name + '</b><br>' + element.tags.addr_street + '<br>' + element.tags.addr_city);
+                        });
+                    });
             });
         }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=<?= $apiKey ?>&callback=initMap&libraries=places"></script>
 </body>
 </html>
