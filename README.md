@@ -12,7 +12,7 @@ The Elderly Care is a web application designed to help elderly(for the age group
   ![image](https://github.com/anuragingle01/Kratin_LLC_Exercise_Anurag/assets/110114526/bb9e1155-2b76-4b6d-878e-358550b01318)
 
 - **Yoga & Exercise**: Assist users in making yoga and exercise easier
-- ![image](https://github.com/anuragingle01/Kratin_LLC_Exercise_Anurag/assets/110114526/5074e4c3-c30f-49b5-a009-cbe6688ab4b5)
+ ![image](https://github.com/anuragingle01/Kratin_LLC_Exercise_Anurag/assets/110114526/5074e4c3-c30f-49b5-a009-cbe6688ab4b5)
 
 - **Nearby Hospitals**: Helps users to track nearby hospitals.
   ![image](https://github.com/anuragingle01/Kratin_LLC_Exercise_Anurag/assets/110114526/90e07e2d-1657-4c74-875e-92bbcb4cb3ee)
@@ -56,7 +56,7 @@ The Elderly Care is a web application designed to help elderly(for the age group
 2. **Viewing Medication Schedule**:
 - Click on "View Scheduled Medications" to see the list of scheduled medications.
 
-3. **Locate Nearby Hosppitals**:
+3. **Locate Nearby Hospitals**:
 - In emergency case user can locate nearby hospitals.
 
 ## License
