@@ -4,7 +4,7 @@ $config['protocol']     = 'mail'; // Set the mail protocol
 $config['smtp_host']    = 'smtp.gmail.com'; // Set your SMTP host
 $config['smtp_port']    = '587'; // Set your SMTP port
 $config['smtp_user']    = 'anuragingle2002@gmail.com'; // Set your SMTP username
-$config['smtp_pass']    = 'Anurag@3161'; // Set your SMTP password
+$config['smtp_pass']    = ''; // Set your SMTP password
 $config['mailpath'] = '/usr/sbin/sendmail';
 
 $config['mailtype']     = 'html'; // Set the email format to HTML
