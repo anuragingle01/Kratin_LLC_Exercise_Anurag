@@ -1,6 +1,6 @@
-# Elderly Care Medication Schedule
+# Elderly Care 
 
-The Elderly Care Medication Schedule is a web application designed to help caregivers manage medication schedules for elderly individuals. This application allows users to add, view, and manage medication details conveniently.
+The Elderly Care  is a web application designed to help caregivers manage medication schedules for elderly individuals. This application allows users to add, view, and manage medication details conveniently.
 
 ## Features
 
