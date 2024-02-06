@@ -1,20 +1,19 @@
 # Elderly Care 
 
-The Elderly Care  is a web application designed to help caregivers manage medication schedules for elderly individuals. This application allows users to add, view, and manage medication details conveniently.
+The Elderly Care is a web application designed to help elderly(for the age group 65+) to live healthier life. This application allows users to add, view, and manage medication details conveniently.
 
 ## Features
 
 - **Add Medication**: Users can add medications including the medicine name, dosage, and timing.
 - **View Medication Schedule**: Users can view the scheduled medications.
-- **Notifications**: Users receive notifications for scheduled medications.
-- **Attractive User Interface**: The application provides an easy-to-use and visually appealing interface.
-
+- **Yoga & Exercise**: Assist users in making yoga and exercise easier
+- **Nearby Hospitals**: Helps users to track nearby hospitals.
+  
 ## Technologies Used
 
 - **Frontend**: HTML, CSS, JavaScript
 - **Backend**: PHP (CodeIgniter Framework)
 - **Database**: MySQL
-- **Notification Service**: Web browser notifications
 
 ## Setup Instructions
 
