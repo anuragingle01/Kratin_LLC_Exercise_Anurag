@@ -28,7 +28,10 @@ class MedicationController extends CI_Controller
 
             $this->Medication_model->add_medication($data);
         }
+
+        $this->load->view('medication_added');
     }
+
 
     public function get_schedule_history($medicine_name, $dosage, $timing)
     {

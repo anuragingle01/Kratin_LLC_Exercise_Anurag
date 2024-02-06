@@ -14,4 +14,8 @@ class Medication_model extends CI_Model {
     public function get_medications() {
         return $this->db->get('medications')->result();
     }
+
+    public function get_all_scheduled_medications() {
+        return $this->db->get('medications')->result();
+    }
 }

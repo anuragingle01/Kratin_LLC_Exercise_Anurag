@@ -1,5 +1,3 @@
-<!-- application/views/home.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +11,10 @@
             margin: 0;
             padding: 0;
             background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
 
         header {
@@ -20,6 +22,7 @@
             color: #ecf0f1;
             text-align: center;
             padding: 20px;
+            width: 100%;
         }
 
         h1 {
@@ -27,28 +30,58 @@
             font-size: 2em;
         }
 
-        nav {
+        .container {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
-            padding: 20px;
-            background-color: #34495e;
+            flex-wrap: wrap;
+            margin-top: 50px;
         }
 
-        nav a {
+        .card {
+            position: relative;
+            width: 300px; 
+            height: 300px; 
+            background-color: #E1EBEE; 
+            color: #000;
+            text-align: center;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card a {
             text-decoration: none;
-            color: #ecf0f1;
+            color: inherit;
             font-size: 1.2em;
-            transition: color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80%; 
+            flex-direction: column;
+            padding: 20px;
         }
 
-        nav a:hover {
-            color: #3498db;
+        .card i {
+            margin-bottom: 10px;
         }
 
-        div.container {
-            max-width: 800px;
-            margin: 20px auto;
+        .additional-info {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 10px;
+            font-size: 0.8em;
+        }
+
+        .card span {
+            font-size: 1.4em; 
+            font-weight: bold; 
         }
     </style>
 </head>
@@ -57,14 +90,35 @@
         <h1>Elderly Care</h1>
     </header>
 
-    <nav>
-        <a href="<?= base_url('home/yogaExercise'); ?>"><i class="fas fa-dumbbell"></i> Yoga & Exercise</a>
-        <a href="<?= base_url('home/scheduleMedicines'); ?>"><i class="fas fa-clock"></i> Schedule Medicines</a>
-        <a href="<?= base_url('home/locateHospital'); ?>"><i class="fas fa-hospital"></i> Locate Nearby Hospital</a>
-        <a href="<?= base_url('home/healthTrack'); ?>"><i class="fas fa-chart-line"></i> Health Track</a>
-    </nav>
-
     <div class="container">
+        <div class="card">
+            <a href="<?= base_url('home/yogaExercise'); ?>">
+                <i class="fas fa-dumbbell"></i>
+                <span>Yoga & Exercise</span>
+                
+            </a>
+        </div>
+        <div class="card">
+            <a href="<?= base_url('home/scheduleMedicines'); ?>">
+                <i class="fas fa-clock"></i>
+                <span>Schedule Medicines</span>
+                
+            </a>
+        </div>
+        <div class="card">
+            <a href="<?= base_url('home/locateHospital'); ?>">
+                <i class="fas fa-hospital"></i>
+                <span>Locate Nearby Hospital</span>
+                
+            </a>
+        </div>
+        <div class="card">
+            <a href="<?= base_url('home/healthTrack'); ?>">
+                <i class="fas fa-chart-line"></i>
+                <span>Health Track</span>
+                
+            </a>
+        </div>
     </div>
 </body>
 </html>
